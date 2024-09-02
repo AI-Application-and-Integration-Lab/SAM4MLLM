@@ -15,8 +15,10 @@ Follow instruction in https://github.com/mit-han-lab/efficientvit
 https://drive.google.com/drive/folders/1pIfY2jTPpIXL4H6QTpTMo-yLP-XW0ehp?usp=sharing
 
 ## Data process code
-In data/.
-Run each jupyter notebook to generate dataset for training.
+In data/.  
+Run each jupyter notebook to generate dataset for training.  
+After generated dataset files, run to_chat_format.ipynb.  
+It will generate the chat format data file for training.
 
 ## Traning code
 In sam4mllm_train.py
