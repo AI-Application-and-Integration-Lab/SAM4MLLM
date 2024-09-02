@@ -3,10 +3,25 @@ This is the implementation of our ECCV'24 "SAM4MLLM: Enhance Multi-Modal Large L
 
 ## 1. Dataset Preparation
 Download each dataset from website:
-- ADE20K:
-- PACO-LVIS: 
-- Part-ImageNet:
-- RefCOCO:
+- ADE20K:https://groups.csail.mit.edu/vision/datasets/ADE20K/
+- PACO-LVIS: https://github.com/facebookresearch/paco/tree/main
+- Part-ImageNet:https://github.com/TACJu/PartImageNet
+- RefCOCO: https://github.com/lichengunc/refer
+- GRES: https://github.com/henghuiding/ReLA
+
+
+Put all of them under data directory so you should get:
+
+```
+    SAM4MLLM/
+    ├──dataset/
+    |  ├──ADE20K/
+    |  ├──PACO-LVIS/
+    |  ├──Part-ImageNet/
+    |  ├──RefCOCO/
+    |  ├──GRES/
+```
+
 
 ## 2. Installation
 - pytorch
