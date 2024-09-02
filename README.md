@@ -1,6 +1,10 @@
 # SAM4MLLM
 This is the implementation of our ECCV'24 "SAM4MLLM: Enhance Multi-Modal Large Language Model for Referring Expression Segmentation"
 
+
+<img src="./image/SAM4MLLM_PPG.png" width="80%">
+
+
 ## Dataset Preparation
 Download each dataset from website:
 - ADE20K:https://groups.csail.mit.edu/vision/datasets/ADE20K/
