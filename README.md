@@ -1,27 +1,33 @@
 # SAM4MLLM
-SAM4MLLM: Enhance Multi-Modal Large Language Model for Referring Expression Segmentation, ECCV, 2024
+This is the implementation of our ECCV'24 "SAM4MLLM: Enhance Multi-Modal Large Language Model for Referring Expression Segmentation"
 
-## Installation
-### requirements
-pytorch transformers
+# 1. Dataset Preparation
+Download each dataset from website:
+- ADE20K:
+- PACO-LVIS: 
+- Part-ImageNet:
+- RefCOCO:
 
-### llava-next
-Follow instruction in https://github.com/LLaVA-VL/LLaVA-NeXT
+# 2. Installation
+- pytorch
+- transformers
+- LLaVA-NeXT: Follow instruction in https://github.com/LLaVA-VL/LLaVA-NeXT
+- EfficientVIT-SAM: Follow instruction in https://github.com/mit-han-lab/efficientvit
 
-### efficientvit-sam
-Follow instruction in https://github.com/mit-han-lab/efficientvit
+# 3. Checkpoint and Data
+- llava-next (llama 3):https://huggingface.co/lmms-lab/llama3-llava-next-8b
+- Efficient-VIT-SAM:https://huggingface.co/han-cai/efficientvit-sam/resolve/main/xl1.pt
+- SAM4MLLM:https://drive.google.com/drive/folders/1pIfY2jTPpIXL4H6QTpTMo-yLP-XW0ehp?usp=sharing
 
-## Checkpoint and Data
-https://drive.google.com/drive/folders/1pIfY2jTPpIXL4H6QTpTMo-yLP-XW0ehp?usp=sharing
+# 4. Data pre-process
 
-## Data process code
-In data/.  
-Run each jupyter notebook to generate dataset for training.  
-After generated dataset files, run to_chat_format.ipynb.  
-It will generate the chat format data file for training.
+In data/.
+Run each jupyter notebook to generate dataset for training.
 
-## Traning code
-In sam4mllm_train.py
+# 5. Traning
+```
+python sam4mllm_train.py
+```
 
-## Inference code
-In simple_infer.ipynb
+# 6. Inference 
+Run simple_infer.ipynb
