@@ -30,6 +30,7 @@ Put all of them under data directory so you should get:
 ## Installation
 - pytorch
 - transformers
+- FlashAttention2
 - LLaVA-NeXT: Follow instruction in https://github.com/LLaVA-VL/LLaVA-NeXT
 - EfficientVIT-SAM: Follow instruction in https://github.com/mit-han-lab/efficientvit
 
