@@ -31,6 +31,7 @@ Put all of them under data directory so you should get:
 - pytorch==2.1.2
 - transformers==4.42.4
 - peft==0.11.1
+- lightning==2.3.3
 - FlashAttention2(optional)
 - LLaVA-NeXT: Follow instruction in https://github.com/LLaVA-VL/LLaVA-NeXT
 - EfficientVIT-SAM: Follow instruction in https://github.com/mit-han-lab/efficientvit
