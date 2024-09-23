@@ -42,7 +42,7 @@ Download each checkpoint:
 - Efficient-VIT-SAM: https://huggingface.co/han-cai/efficientvit-sam/resolve/main/xl1.pt
 - SAM4MLLM: https://drive.google.com/drive/folders/1KH7hnDY8W7lXNHGtCbloA5jlWMZ0vgND?usp=drive_link
 - SAM4MLLM+: https://drive.google.com/drive/folders/1Ols3VQ075UQKTb5Do0xkvQxiyLkDffBh
-- SAM-Decoder: https://drive.google.com/drive/folders/14burV34SxcQnxqkoiQ9Ax-OB26XmSf8S?usp=drive_link
+- SAM-Decoder (finetuned on Coco dataset): https://drive.google.com/drive/folders/14burV34SxcQnxqkoiQ9Ax-OB26XmSf8S?usp=drive_link
 
 Put all of them under checkpoint directory so you should get:
 ```
