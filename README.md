@@ -71,18 +71,6 @@ python sam4mllm_train.py
 Run simple_infer.ipynb
 
 
-## Docker
-
-### build docker 
-```
-docker build -t sam4mllm:latest
-```
-
-### run 
-```
-sudo docker run --gpus all -it --rm --shm-size 32g -v [sam4mllm code]:workspace -v [data_path]:datasets sam4mllm
-```
-
 ## Licenses
 Copyright © 2024, NVIDIA Corporation. All rights reserved.
 
