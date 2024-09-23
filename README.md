@@ -61,3 +61,27 @@ python sam4mllm_train.py
 
 ## Inference 
 Run simple_infer.ipynb
+
+
+## Docker
+
+### build docker 
+```
+docker build -t sam4mllm:latest
+```
+
+### run 
+```
+sudo docker run --gpus all -it --rm --shm-size 32g -v [sam4mllm code]:workspace -v [data_path]:datasets sam4mllm
+```
+
+- For example
+```
+sudo docker run --gpus all -it --rm --shm-size 32g -v /home/ai2lab/weihua/2024_ECCV_SAM4MLLM/SAM4MLLM:/workspace -v :/datasets sam4mllm
+```
+
+
+## Licenses
+Copyright © 2024, NVIDIA Corporation. All rights reserved.
+
+This work is made available under the NVIDIA Source Code License-NC. Click [here](https://github.com/AI-Application-and-Integration-Lab/SAM4MLLM/blob/main/LICENCE) to view a copy of this license.
