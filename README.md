@@ -40,7 +40,9 @@ Put all of them under data directory so you should get:
 Download each checkpoint:
 - llava-next (llama 3): https://huggingface.co/lmms-lab/llama3-llava-next-8b
 - Efficient-VIT-SAM: https://huggingface.co/han-cai/efficientvit-sam/resolve/main/xl1.pt
-- SAM4MLLM: https://drive.google.com/drive/folders/1pIfY2jTPpIXL4H6QTpTMo-yLP-XW0ehp?usp=sharing
+- SAM4MLLM: https://drive.google.com/drive/folders/1KH7hnDY8W7lXNHGtCbloA5jlWMZ0vgND?usp=drive_link
+- SAM4MLLM+: https://drive.google.com/drive/folders/1Ols3VQ075UQKTb5Do0xkvQxiyLkDffBh
+- SAM-Decoder: https://drive.google.com/drive/folders/14burV34SxcQnxqkoiQ9Ax-OB26XmSf8S?usp=drive_link
 
 Put all of them under checkpoint directory so you should get:
 ```
@@ -48,7 +50,9 @@ Put all of them under checkpoint directory so you should get:
     ├──checkpoint/
     |  ├──llama3-llava-next-8b/
     |  ├──sam4mllm/
+    |  ├──sam4mllm_plus/
     |  ├──xl1.pt/
+    |  ├──effvit_xl1_decoder_coco_ft.pt
 ```
 ## Data pre-process
 
