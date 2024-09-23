@@ -2,7 +2,7 @@
 This is the implementation of our ECCV'24 "SAM4MLLM: Enhance Multi-Modal Large Language Model for Referring Expression Segmentation"
 
 
-<img src="./image/SAM4MLLM_PPG.png" width="80%">
+<img src="./image/SAM4MLLM_PQPP.png" width="60%">
 
 
 ## Dataset Preparation
@@ -47,7 +47,7 @@ Put all of them under checkpoint directory so you should get:
     SAM4MLLM/
     ├──checkpoint/
     |  ├──llama3-llava-next-8b/
-    |  ├──SAM4MLLM/
+    |  ├──sam4mllm-checkpoint-3199/
     |  ├──xl1.pt/
 ```
 ## Data pre-process
