@@ -7,11 +7,11 @@ This is the implementation of our ECCV'24 "SAM4MLLM: Enhance Multi-Modal Large L
 
 ## Dataset Preparation
 Download each dataset from website:
-- ADE20K:https://groups.csail.mit.edu/vision/datasets/ADE20K/
-- PACO-LVIS: https://github.com/facebookresearch/paco/tree/main
-- Part-ImageNet:https://github.com/TACJu/PartImageNet
-- RefCOCO: https://github.com/lichengunc/refer
-- GRES: https://github.com/henghuiding/ReLA
+- [ADE20K](https://groups.csail.mit.edu/vision/datasets/ADE20K/)
+- [PACO-LVIS](https://github.com/facebookresearch/paco/tree/main)
+- [Part-ImageNet](https://github.com/TACJu/PartImageNet)
+- [RefCOCO](https://github.com/lichengunc/refer)
+- [GRES](https://github.com/henghuiding/ReLA)
 
 
 Put all of them under data directory so you should get:
@@ -38,11 +38,11 @@ Put all of them under data directory so you should get:
 
 ## Checkpoint
 Download each checkpoint:
-- llava-next (llama 3): https://huggingface.co/lmms-lab/llama3-llava-next-8b
-- Efficient-VIT-SAM: https://huggingface.co/han-cai/efficientvit-sam/resolve/main/xl1.pt
-- SAM4MLLM: https://drive.google.com/drive/folders/1KH7hnDY8W7lXNHGtCbloA5jlWMZ0vgND?usp=drive_link
-- SAM4MLLM+: https://drive.google.com/drive/folders/1Ols3VQ075UQKTb5Do0xkvQxiyLkDffBh
-- SAM-Decoder (finetuned on Coco dataset): https://drive.google.com/drive/folders/14burV34SxcQnxqkoiQ9Ax-OB26XmSf8S?usp=drive_link
+- [llava-next (llama 3)](https://huggingface.co/lmms-lab/llama3-llava-next-8b)
+- [Efficient-VIT-SAM](https://huggingface.co/han-cai/efficientvit-sam/resolve/main/xl1.pt)
+- [SAM4MLLM](https://drive.google.com/drive/folders/1KH7hnDY8W7lXNHGtCbloA5jlWMZ0vgND?usp=drive_link)
+- [SAM4MLLM+](https://drive.google.com/drive/folders/1ytEfGRa6bxThTXQn5MLVKKy4jsxxBo6M)
+- [SAM-Decoder (finetuned on Coco dataset)](https://drive.google.com/drive/folders/14burV34SxcQnxqkoiQ9Ax-OB26XmSf8S?usp=drive_link)
 
 Put all of them under checkpoint directory so you should get:
 ```
