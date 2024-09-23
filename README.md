@@ -51,8 +51,16 @@ Put all of them under checkpoint directory so you should get:
     |  ├──xl1.pt/
 ```
 ## Data pre-process
-In data/.
-Run each jupyter notebook to generate dataset for training.
+
+- Rearrange data
+
+In data, Run each jupyter notebook to generate dataset for training.
+
+- Convert the data into dialouge format:
+
+```
+python to_chat_format.ipynb
+```
 
 ## Traning
 ```
