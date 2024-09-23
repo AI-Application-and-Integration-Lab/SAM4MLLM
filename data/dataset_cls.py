@@ -283,8 +283,7 @@ class GroupRefDatasetHf(Dataset):
         
         return encoded
     
-    
-    
+
 class GroupRefDatasetHfV2(Dataset):
     def __init__(
             self,

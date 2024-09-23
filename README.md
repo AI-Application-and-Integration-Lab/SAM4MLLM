@@ -38,16 +38,16 @@ Put all of them under data directory so you should get:
 
 ## Checkpoint
 Download each checkpoint:
-- llava-next (llama 3):https://huggingface.co/lmms-lab/llama3-llava-next-8b
-- Efficient-VIT-SAM:https://huggingface.co/han-cai/efficientvit-sam/resolve/main/xl1.pt
-- SAM4MLLM:https://drive.google.com/drive/folders/1pIfY2jTPpIXL4H6QTpTMo-yLP-XW0ehp?usp=sharing
+- llava-next (llama 3): https://huggingface.co/lmms-lab/llama3-llava-next-8b
+- Efficient-VIT-SAM: https://huggingface.co/han-cai/efficientvit-sam/resolve/main/xl1.pt
+- SAM4MLLM: https://drive.google.com/drive/folders/1pIfY2jTPpIXL4H6QTpTMo-yLP-XW0ehp?usp=sharing
 
 Put all of them under checkpoint directory so you should get:
 ```
     SAM4MLLM/
     ├──checkpoint/
     |  ├──llama3-llava-next-8b/
-    |  ├──sam4mllm-checkpoint-3199/
+    |  ├──sam4mllm/
     |  ├──xl1.pt/
 ```
 ## Data pre-process
