@@ -34,7 +34,7 @@ Put all of them under data directory so you should get:
 - lightning==2.3.3
 - FlashAttention2(optional)
 - LLaVA-NeXT: Follow instruction in https://github.com/LLaVA-VL/LLaVA-NeXT
-    - The version of LLaVA-NeXT we used had the commit ID (7481f6bf6ff368c27f64cb21ec73ce10b079b680) at that time.  
+    - The version of LLaVA-NeXT we used is [here](https://github.com/LLaVA-VL/LLaVA-NeXT/tree/7481f6bf6ff368c27f64cb21ec73ce10b079b680).
 - EfficientVIT-SAM: Follow instruction in https://github.com/mit-han-lab/efficientvit
 
 ## Checkpoint
