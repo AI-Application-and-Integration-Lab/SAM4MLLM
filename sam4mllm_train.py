@@ -37,6 +37,8 @@ GRAD_ACC_STEPS = 8
 MAX_LEN = 1536
 USE_WANDB = True
 
+RESUME = False
+RESUME_PATH='./ckp/checkpoint-latest'
 # %%
 class LlavaDataset(torch.utils.data.Dataset):
     def __init__(self, data, tokenizer,
@@ -80,7 +82,6 @@ class LlavaDataset(torch.utils.data.Dataset):
         
         return sample
     
-
 def load_processor():
     from transformers import AutoConfig, AutoTokenizer, AutoImageProcessor
     
@@ -134,6 +135,13 @@ def load_model():
     model.eval()
     model.tie_weights()
     
+    return model
+
+def load_lora_model(model):
+    from peft import PeftModel, PeftConfig
+    if RESUME_PATH:
+        model = PeftModel.from_pretrained(model, RESUME_PATH, is_trainable=True)
+            
     return model
 
 def get_lora_model(model):
@@ -190,8 +198,13 @@ def main(fabric):
         mlm=False,
     )
     
-    model = load_model(PRETRAINED)
-    model = get_lora_model(model)
+    model = load_model()
+    if RESUME:
+        model = load_lora_model(model)
+    else:   
+        model = get_lora_model(model)
+
+
     model.print_trainable_parameters()
     model.gradient_checkpointing_enable(
         gradient_checkpointing_kwargs={"use_reentrant": False},
@@ -212,41 +225,65 @@ def main(fabric):
     if fabric.global_rank == 0:
         print(f"total steps: {total_steps}")
     
-    optimizer = AdamW8bit(
-        [p for p in model.parameters() if p.requires_grad],
-        lr=LR,
-        weight_decay=0.001,
-    )
-    scheduler = torch.optim.lr_scheduler.OneCycleLR(
-        optimizer,
-        max_lr=LR,
-        pct_start=0.01,
-        total_steps=total_steps,
-        anneal_strategy="linear",
-    )
+    resume_epoch = 0
+    global_step = 0
+    start_iteration = 0
+
+    if RESUME:
+        
+        optimizer = AdamW8bit(
+            [p for p in model.parameters() if p.requires_grad],
+            lr=LR,
+            weight_decay=0.001,
+        )
+        scheduler = torch.optim.lr_scheduler.OneCycleLR(
+            optimizer,
+            max_lr=LR,
+            pct_start=0.01,
+            total_steps=total_steps,
+            anneal_strategy="linear",
+        )
+
+        model, optimizer = fabric.setup(model, optimizer)
+        
+        checkpoint = torch.load(f'{RESUME_PATH}/opt_ckp.pth')
+        optimizer.param_groups[0] = checkpoint['optimizer']
+        start_iteration = checkpoint['iteration']
+        resume_epoch = checkpoint['epoch']
+        global_step = checkpoint['global_step']
+        scheduler = checkpoint['scheduler']
     
-    model, optimizer = fabric.setup(model, optimizer)
+    else:
+        optimizer = AdamW8bit(
+            [p for p in model.parameters() if p.requires_grad],
+            lr=LR,
+            weight_decay=0.001,
+        )
+        scheduler = torch.optim.lr_scheduler.OneCycleLR(
+            optimizer,
+            max_lr=LR,
+            pct_start=0.01,
+            total_steps=total_steps,
+            anneal_strategy="linear",
+        )
+        
+        model, optimizer = fabric.setup(model, optimizer)
+
     dataloader = fabric.setup_dataloaders(train_loader)
     
-    global_step = 0
-    
     model.train()
-    for epoch in range(NUM_EPOCH):
+    for epoch in range(resume_epoch, NUM_EPOCH):
         batch_loss = 0
         pbar = tqdm(dataloader, desc=f"Epoch {epoch}", disable=fabric.global_rank != 0)
-        for iteration, batch in enumerate(pbar):
-            
+        for iteration, batch in enumerate(pbar, start=start_iteration):
             is_accumulating = iteration % GRAD_ACC_STEPS != 0
-
             loss = model(**batch, use_cache=False).loss
             fabric.backward(loss)
             batch_loss += loss.item()
-                
             if not is_accumulating:
                 optimizer.step()
                 optimizer.zero_grad()
                 scheduler.step()
-                
                 fabric.log_dict({
                     "trainer/loss": batch_loss/GRAD_ACC_STEPS,
                     "trainer/lr": optimizer.param_groups[0]["lr"],
@@ -266,15 +303,36 @@ def main(fabric):
                 global_step += 1
                 
             if (global_step+1) % 200 == 0 and fabric.global_rank == 0:
-                save_dir = f"./refcoco_z2"
+                save_dir = f"./ckp"
                 os.makedirs(save_dir, exist_ok=True)
-                
                 save_path = f"{save_dir}/checkpoint-{global_step}"
+
                 model.save_pretrained(save_path)
                 tokenizer.save_pretrained(save_path)
                 
                 print(f"Succesfully saved model at {save_path}")
             
+            if (global_step+1) % 2 == 0 and fabric.global_rank == 0 and not is_accumulating:
+                save_dir = f"./ckp"
+                os.makedirs(save_dir, exist_ok=True)    
+                
+                # save checkpoint
+                save_path = f"{save_dir}/checkpoint-latest"
+                model.save_pretrained(save_path)
+                tokenizer.save_pretrained(save_path)
+                
+                # save optimizer and schedulser
+                opt_checkpoint = {
+                    'epoch': epoch,
+                    'iteration':iteration,
+                    'global_step': global_step,
+                    'optimizer': optimizer.param_groups[0],
+                    'scheduler': scheduler}
+                
+                torch.save(opt_checkpoint, f'{save_path}/opt_ckp.pth')
+                print(f"Succesfully saved model at {save_path}")
+
+
             torch.cuda.empty_cache()
 
 # %%
