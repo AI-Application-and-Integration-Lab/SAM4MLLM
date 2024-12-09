@@ -1,5 +1,5 @@
 # SAM4MLLM
-This is the implementation of "SAM4MLLM: Enhance Multi-Modal Large Language Model for Referring Expression Segmentation"
+This is the implementation of ["SAM4MLLM: Enhance Multi-Modal Large Language Model for Referring Expression Segmentation"](https://arxiv.org/abs/2409.10542)
 
 
 <img src="./image/SAM4MLLM_PQPP.png" width="60%">
