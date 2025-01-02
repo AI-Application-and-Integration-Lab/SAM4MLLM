@@ -1,5 +1,5 @@
 # SAM4MLLM
-This is the implementation of ["SAM4MLLM: Enhance Multi-Modal Large Language Model for Referring Expression Segmentation"](https://arxiv.org/abs/2409.10542)
+This is the implementation of our ECCV'24 "SAM4MLLM: Enhance Multi-Modal Large Language Model for Referring Expression Segmentation"
 
 
 <img src="./image/SAM4MLLM_PQPP.png" width="60%">
@@ -13,6 +13,7 @@ Download each dataset from website:
 - [RefCOCO](https://github.com/lichengunc/refer)
 - [GRES](https://github.com/henghuiding/ReLA)
 
+You are responsible for checking if the dataset license is fit for the intended purpose.
 
 Put all of them under data directory so you should get:
 
@@ -34,27 +35,9 @@ Put all of them under data directory so you should get:
 - lightning==2.3.3
 - FlashAttention2(optional)
 - LLaVA-NeXT: Follow instruction in https://github.com/LLaVA-VL/LLaVA-NeXT
-    - The version of LLaVA-NeXT we used is [here](https://github.com/LLaVA-VL/LLaVA-NeXT/tree/8f0502567954dab2db5a620b2feed48734d6aed9).
 - EfficientVIT-SAM: Follow instruction in https://github.com/mit-han-lab/efficientvit
 
-## Checkpoint
-Download each checkpoint:
-- [llava-next (llama 3)](https://huggingface.co/lmms-lab/llama3-llava-next-8b)
-- [Efficient-VIT-SAM](https://huggingface.co/han-cai/efficientvit-sam/resolve/main/xl1.pt)
-- [SAM4MLLM](https://drive.google.com/drive/folders/1KH7hnDY8W7lXNHGtCbloA5jlWMZ0vgND?usp=drive_link)
-- [SAM4MLLM+](https://drive.google.com/drive/folders/1ytEfGRa6bxThTXQn5MLVKKy4jsxxBo6M)
-- [SAM-Decoder (finetuned on Coco dataset)](https://drive.google.com/drive/folders/14burV34SxcQnxqkoiQ9Ax-OB26XmSf8S?usp=drive_link)
 
-Put all of them under checkpoint directory so you should get:
-```
-    SAM4MLLM/
-    ├──checkpoint/
-    |  ├──llama3-llava-next-8b/
-    |  ├──sam4mllm/
-    |  ├──sam4mllm_plus/
-    |  ├──xl1.pt/
-    |  ├──effvit_xl1_decoder_coco_ft.pt
-```
 ## Data pre-process
 
 - Rearrange data
