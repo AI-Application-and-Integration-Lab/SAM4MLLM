@@ -47,6 +47,16 @@ Download each checkpoint:
 - [SAM-Decoder (finetuned on Coco dataset)](https://drive.google.com/drive/folders/14burV34SxcQnxqkoiQ9Ax-OB26XmSf8S?usp=drive_link)
 
 
+Put all of them under checkpoint directory so you should get:
+```
+    SAM4MLLM/
+    ├──checkpoint/
+    |  ├──llama3-llava-next-8b/
+    |  ├──sam4mllm/
+    |  ├──sam4mllm_plus/
+    |  ├──xl1.pt/
+    |  ├──effvit_xl1_decoder_coco_ft.pt
+```
 ## Data pre-process
 
 - Rearrange data
